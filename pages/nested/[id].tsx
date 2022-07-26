@@ -1,12 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import * as React from "react";
-import fs from "fs";
-import path from "path";
+import res from "../../data/fake.json";
 //======================================
 const PageId = ({ data }: { data: any }) => {
   const { query } = useRouter();
-  console.log(data);
   //======================================return
   return (
     <div>
@@ -17,13 +15,8 @@ const PageId = ({ data }: { data: any }) => {
   );
 };
 export default PageId;
-
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  let res = fs.readFileSync(
-    "C:\\Users\\alilo\\Projects\\bug-repo\\data\\fake.json",
-    { encoding: "utf8" }
-  );
-  const data = JSON.parse(res)?.filter(
+  const data = res.filter(
     //   @ts-expect-error
     (o) => o.id == ctx.params.id
   )[0];
