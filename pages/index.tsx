@@ -12,6 +12,9 @@ const Home: NextPage = () => {
       <br />
       <br />
       <Link href="/nested/2">Page 2</Link>
+      <br />
+      <br />
+      <Link href="/nested/324">non-existing Page </Link>
     </div>
   );
 };
